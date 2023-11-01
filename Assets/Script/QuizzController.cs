@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,34 +9,22 @@ public class QuizzController : MonoBehaviour
 {
     [SerializeField] QuizSO quizSO;
     [SerializeField] TextMeshProUGUI question;
-    [SerializeField] Button[] answers;
+    [SerializeField] Button[] answerButtons;
     string answer;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
         answer = quizSO.GetCorrectAnswer();
         question.text = quizSO.GetQuestion();
-        for (int index = 0; index < answers.Length; index++)
+        foreach (Button answerButton in answerButtons)
         {
-            Debug.Log(answers[index].name);
-            answers[index].GetComponentInChildren<TextMeshProUGUI>().text 
-                = quizSO.GetAnswer(index);
-            //answers[index].onClick.AddListener(() => CheckAnswer(answers[index]));
+            answerButton.GetComponentInChildren<TextMeshProUGUI>().text = quizSO.GetAnswer(Array.IndexOf(answerButtons, answerButton));
+            answerButton.onClick.AddListener(() => CheckAnswer(answerButton));
         }
     }
 
     public void CheckAnswer(Button button)
     {
-        if (button.GetComponentInChildren<TextMeshProUGUI>().text == answer)
-        {
-            Debug.Log("correct");
-        }
-        else
-        {
-            Debug.Log("false");
-        }
+        Debug.Log(button.GetComponentInChildren<TextMeshProUGUI>().text == answer ? "correct" : "false");
     }
-
-
 }
