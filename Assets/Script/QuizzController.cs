@@ -10,6 +10,10 @@ public class QuizzController : MonoBehaviour
     [SerializeField] QuizSO quizSO;
     [SerializeField] TextMeshProUGUI question;
     [SerializeField] Button[] answerButtons;
+
+    [SerializeField] Sprite defaultAnswerFrame;
+    [SerializeField] Sprite correctAnswerFrame;
+
     string answer;
 
     void Start()
@@ -25,6 +29,24 @@ public class QuizzController : MonoBehaviour
 
     public void CheckAnswer(Button button)
     {
-        Debug.Log(button.GetComponentInChildren<TextMeshProUGUI>().text == answer ? "correct" : "false");
+        //Debug.Log(button.GetComponentInChildren<TextMeshProUGUI>().text == answer ? "correct" : "false");
+        if (button.GetComponentInChildren<TextMeshProUGUI>().text == answer)
+        {
+            button.GetComponent<Image>().sprite = correctAnswerFrame;
+        }
+        else
+        {
+            button.GetComponent<Image>().sprite = defaultAnswerFrame;
+        }
+        SetButtonState(false);
+        button.GetComponent<Button>().interactable = true;
+    }
+
+    private void SetButtonState(bool value)
+    {
+        foreach (Button answerButton in answerButtons)
+        {
+            answerButton.GetComponent<Button>().interactable = value;
+        }
     }
 }
