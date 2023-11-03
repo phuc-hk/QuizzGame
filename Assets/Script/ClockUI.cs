@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClockUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Image clockImage;
+    [SerializeField] ClockController clockController;
+   
+
+    private void Start()
     {
-        
+        clockImage = GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        clockImage.fillAmount = clockController.GetTimerPercentage();
     }
 }

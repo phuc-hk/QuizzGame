@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 360950982}
   - component: {fileID: 360950984}
   - component: {fileID: 360950983}
+  - component: {fileID: 360950985}
   m_Layer: 0
   m_Name: neon_round_orange
   m_TagString: Untagged
@@ -420,6 +421,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360950981}
   m_CullTransparentMesh: 1
+--- !u!114 &360950985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360950981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2555ade4a68e341a215c6a920863fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockImage: {fileID: 360950983}
+  clockController: {fileID: 1989560740}
 --- !u!1 &438830591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,6 +2216,7 @@ GameObject:
   - component: {fileID: 1989560738}
   - component: {fileID: 1989560737}
   - component: {fileID: 1989560739}
+  - component: {fileID: 1989560740}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2220,7 +2236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebdd0961cdccb54ca46dd3402085cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizSO: {fileID: 11400000, guid: 018c5ce043beb6b4389764921e4568f2, type: 2}
+  quizSO:
+  - {fileID: 11400000, guid: 018c5ce043beb6b4389764921e4568f2, type: 2}
+  - {fileID: 11400000, guid: 13e10b8907a883d48b4e9de6a173e1fe, type: 2}
   question: {fileID: 350965337}
   answerButtons:
   - {fileID: 1147650843}
@@ -2229,6 +2247,8 @@ MonoBehaviour:
   - {fileID: 710737792}
   defaultAnswerFrame: {fileID: 21300000, guid: 87a75455f23656d44854fbd22c2f5b61, type: 3}
   correctAnswerFrame: {fileID: 21300000, guid: 174324e9969f35a4fafe2d9ec256a8a8, type: 3}
+  isLoadNextQuestion: 0
+  clockController: {fileID: 1989560740}
 --- !u!4 &1989560738
 Transform:
   m_ObjectHideFlags: 0
@@ -2257,6 +2277,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+--- !u!114 &1989560740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989560736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084c0ae3fafd4b8438a6391f43950692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToCompleteQuestion: 10
+  quizzController: {fileID: 1989560737}
 --- !u!1 &2137114876
 GameObject:
   m_ObjectHideFlags: 0
