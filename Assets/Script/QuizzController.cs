@@ -13,13 +13,10 @@ public class QuizzController : MonoBehaviour
     [SerializeField] QuizSO[] quizSO;
     private QuizSO quizz;
     private int currentQuestionIndex = 0;
-    [SerializeField] TextMeshProUGUI question;
-    [SerializeField] Button[] answerButtons;
+    [SerializeField] public TextMeshProUGUI question;
+    [SerializeField] public Button[] answerButtons;
 
-    [SerializeField] Sprite defaultAnswerFrame;
-    [SerializeField] Sprite correctAnswerFrame;
-
-    string answer;
+    public string answer;
     public bool isLoadNextQuestion = false;
     public bool isAnswerDone = false;
 
@@ -41,7 +38,7 @@ public class QuizzController : MonoBehaviour
             ResetButtonFrame();
         }
     }
-    private void DisplayAnswer()
+    public void DisplayAnswer()
     {
         quizz = GetQuestion(currentQuestionIndex);
         answer = quizz.GetCorrectAnswer();
@@ -62,25 +59,19 @@ public class QuizzController : MonoBehaviour
 
     public void CheckAnswer(Button button)
     {
-        //Debug.Log(button.GetComponentInChildren<TextMeshProUGUI>().text == answer ? "correct" : "false");
         if (button.GetComponentInChildren<TextMeshProUGUI>().text == answer)
         {
-            button.GetComponent<Image>().sprite = correctAnswerFrame;
             ScoreController.instance.ChangeScore(1);
-            //Debug.Log("+ 1 diem ne");
         }
         else
         {
-            button.GetComponent<Image>().sprite = defaultAnswerFrame;
             ScoreController.instance.ChangeScore(-1);
-            //Debug.Log("- 1 diem ne");
         }
         isLoadNextQuestion = true;
         isAnswerDone = true;
         SetButtonState(false);
         foreach (Button answerButton in answerButtons)
         {
-
             answerButton.onClick.RemoveAllListeners();
         }
     }
@@ -97,7 +88,7 @@ public class QuizzController : MonoBehaviour
     {
         foreach (Button answerButton in answerButtons)
         {
-            answerButton.GetComponent<Image>().sprite = defaultAnswerFrame;
+            //answerButton.GetComponent<Image>().sprite = defaultAnswerFrame;
         }
     }
 }

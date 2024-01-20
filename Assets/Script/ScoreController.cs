@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoreController : MonoBehaviour
 {
     public static ScoreController instance;
-    public int score;
+    public int score = 0;
     public Action OnScoreChange;
 
     private void Awake()
