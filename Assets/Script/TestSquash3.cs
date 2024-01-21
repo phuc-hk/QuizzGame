@@ -19,5 +19,7 @@ public class TestSquash3 : MonoBehaviour
     void Test()
     {
         Debug.Log("Test squash 3 commit 1");
+        Debug.Log("Test squash 3 commit 2");
+        Debug.Log("Test squash 3 commit 3");
     }
 }
