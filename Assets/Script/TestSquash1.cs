@@ -20,5 +20,6 @@ public class TestSquash1 : MonoBehaviour
     {
         Debug.Log("Test 1");
         Debug.Log("Test 2");
+        Debug.Log("Test 3");
     }
 }
